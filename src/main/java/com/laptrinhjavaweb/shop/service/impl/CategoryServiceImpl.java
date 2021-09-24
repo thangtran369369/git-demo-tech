@@ -1,6 +1,7 @@
 package com.laptrinhjavaweb.shop.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -18,10 +19,22 @@ public class CategoryServiceImpl implements CategoryService {
 	public CategoryServiceImpl(CategoryRepository categoryRepository) {
 		this.categoryRepository = categoryRepository;
 	}
+	
+	
+	@Override
+	public List<Category> findByNameContaining(String name) {
+		return categoryRepository.findByNameContaining(name);
+	}
+
 
 	@Override
 	public <S extends Category> S save(S entity) {
 		return categoryRepository.save(entity);
+	}
+	
+	@Override
+	public Optional<Category> findById(Long id) {
+		return categoryRepository.findById(id);
 	}
 
 	@Override

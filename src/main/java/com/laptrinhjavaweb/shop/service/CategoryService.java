@@ -1,6 +1,7 @@
 package com.laptrinhjavaweb.shop.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -52,5 +53,9 @@ public interface CategoryService {
 	Page<Category> findAll(Pageable pageable);
 
 	<S extends Category> S save(S entity);
+
+	Optional<Category> findById(Long id);
+
+	List<Category> findByNameContaining(String name);
 	
 }
